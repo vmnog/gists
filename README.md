@@ -1,3 +1,13 @@
+# How to install and config nvim
+
+1. Install nvim https://github.com/neovim/neovim/wiki/Installing-Neovim
+2. Install vim-plug https://github.com/junegunn/vim-plug
+3. Copy init.vim to your ~/.config/nvim/
+4. Open init.vim with nvim `$ nvim ~/.config/nvim/init.vim` 
+5. Install plugins `:PlugInstall`
+6. Re-open nvim
+
+
 # gists
 my configs for alias, git, nvim configs and plugins, tmux etc
 
