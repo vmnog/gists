@@ -3,10 +3,10 @@
 01. Install nvim https://github.com/neovim/neovim/wiki/Installing-Neovim
 00. Install vim-plug https://github.com/junegunn/vim-plug
 00. Install lua https://www.lua.org/download.html
-1. Open your coc-vim repo (`/home/vmnog/.local/share/nvim/plugged/coc.nvim`) and run `$ yarn install` 
+1. Open your coc-vim repo (`/home/YOUR_USERNAME/.local/share/nvim/plugged/coc.nvim`) and run `$ yarn install` 
 2. Copy init.vim to your ~/.config/nvim/
 3. Open init.vim with nvim `$ nvim ~/.config/nvim/init.vim` 
-4. If you use asdf, change the variable `let g:coc_node_path = '/home/YOUR_USERNAME/.asdf/shims/node' 
+4. If you use asdf, change the variable `let g:coc_node_path = '/home/YOUR_USERNAME/.asdf/shims/node`
 5. Install plugins `:PlugInstall`
 6. Install Coc Plugins `:CocInstall coc-json coc-tsserver`
 7. Re-open nvim
