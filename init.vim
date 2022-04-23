@@ -8,6 +8,15 @@
 :set mouse=a
 :set autoread
 
+" >> custom remap configs
+
+" press double esc for exiting search results mode
+nnoremap <silent> <Esc><Esc> :let @/ = ""<CR>
+
+" default colorscheme
+" :colorscheme dracula
+:colorscheme gruvbox
+
 "au VimEnter *  NERDTree "for auto open NERDTree side bar when start nvim
 
 call plug#begin()
@@ -74,8 +83,6 @@ autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trail
 " tagbar shortcuts
 nmap <F8> :TagbarToggle<CR>
 
-" default colorscheme
-:colorscheme dracula
 
 " for prevent warning from coc.nvim
 let g:coc_disable_startup_warning = 1 
