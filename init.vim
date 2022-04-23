@@ -13,10 +13,6 @@
 " press double esc for exiting search results mode
 nnoremap <silent> <Esc><Esc> :let @/ = ""<CR>
 
-" default colorscheme
-" :colorscheme dracula
-:colorscheme gruvbox
-
 "au VimEnter *  NERDTree "for auto open NERDTree side bar when start nvim
 
 call plug#begin()
@@ -38,6 +34,10 @@ Plug 'dracula/vim' " dracula theme -> :Colors -> select dracula
 Plug 'APZelos/blamer.nvim' " for blame git history in line, similar to gitlens
 
 call plug#end()
+
+" default colorscheme
+" :colorscheme dracula
+:colorscheme gruvbox
 
 let g:coc_node_path = '/home/brasilprev/.asdf/shims/node'
 
