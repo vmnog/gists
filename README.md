@@ -15,14 +15,14 @@
 # gists
 my configs for alias, git, nvim configs and plugins, tmux etc
 
-Nvim Shortcuts
+# vim
 
 | Description | Command |
 | --- | --- |
 | Split vertically | Ctrl+w  + v |
 | Split horizontally | Ctrl+w  + s |
-| Open searched file in split vertical | :vs [file path] |
-| Opens terminal current window | :ter |
+| Open searched file in split vertical | :vs [file path (optional)] |
+| Enter terminal mode  | :ter |
 | Exit terminal mode  | Ctrl+\ Ctrl+n |
 | Switch between vim panes | Ctrl + ww |
 | Copy current line | yy |
@@ -38,7 +38,7 @@ Nvim Shortcuts
 | Navigate previous word (consider special characters) | b |
 | Navigate next sentence | Shift+e |
 | Navigate previous sentence  | Shift+b |
-| Search pattern using Vimgrep | :vimgrep <expression> <path> :vimgrep /Esse é o seu/ src/**/**.html |
+| Search pattern using Vimgrep | :vimgrep <expression> <path> <br/> :vimgrep `/Esse é o seu/ src/**/**.html` |
 | While in Vimgrep result:  jump next occurrence | :cn |
 | While in Vimgrep result:  jump previous occurrence | :cp |
 | While in Vimgrep result:  jump next occurrence file | :cnf |
@@ -80,3 +80,12 @@ Nvim Shortcuts
 | Redo | ctrl + r |
 | Open Current file in NerdTree (custom config) | ctrl + a |
 | Open NerdTree (custom config) | ctrl + t |
+| Select content, delete and enter insert mode | v + c |
+| After using “/<pattern>” for search in file, exit search results (custom) | esc + esc |
+| Enter move window mode  | ctrl + w |
+| Move current pane left | ctrl + w (move window mode) ctrl + R |
+| Move current pane right | ctrl + w (move window mode) ctrl + r |
+| Navigate between panes by direction  | ctrl + w + <hjkl> |
+| Move current pane to very direction | ctrl + w + <HJKL> |
+| Remove next spaces and returns | shift + j |
+| navigate direction by N lines / characters | (number) + (direction hjlk) → 10j 10k 10l 10h |
