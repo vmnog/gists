@@ -1,5 +1,7 @@
 :set noswapfile
-:set number
+:set nowrap
+" :set number
+:set relativenumber
 :set autoindent
 :set tabstop=2
 :set shiftwidth=2
@@ -10,6 +12,14 @@
 
 " >> custom remap configs
 
+" for enabling running vim macros in multiple lines
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
 " press double esc for exiting search results mode
 nnoremap <silent> <Esc><Esc> :let @/ = ""<CR>
 
@@ -19,6 +29,7 @@ call plug#begin()
 
 Plug 'https://github.com/vim-airline/vim-airline' "mostra informações detalhadas na parte de baixo do terminal
 Plug 'https://github.com/preservim/nerdtree' "habilita navegação pelos arquivos com o comando NERDTreeFocus
+Plug 'Xuyuanp/nerdtree-git-plugin' "show git history for changed files in nerdtree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
@@ -70,12 +81,11 @@ let g:NERDTreeDirArrowCollapsible="~"
 " prettier vim-prettier
 let g:neoformat_try_node_exe = 1
 autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ es5
-"autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
-"autocmd BufWritePre,TextChanged,InsertLeave *.ts Neoformat
-"autocmd BufWritePre,TextChanged,InsertLeave *.tsx Neoformat
-"autocmd BufWritePre,TextChanged,InsertLeave *.html Neoformat
-"autocmd BufWritePre,TextChanged,InsertLeave *.scss Neoformat
-
+" autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
+" autocmd BufWritePre,TextChanged,InsertLeave *.ts Neoformat
+" autocmd BufWritePre,TextChanged,InsertLeave *.tsx Neoformat
+" autocmd BufWritePre,TextChanged,InsertLeave *.html Neoformat
+" autocmd BufWritePre,TextChanged,InsertLeave *.scss Neoformat
 
 " For No Previews
 :set completeopt-=preview 
@@ -138,8 +148,7 @@ endfunction
 " Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
+else inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
