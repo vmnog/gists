@@ -10,6 +10,7 @@
 :set wrap!
 :set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+:set path+=**
 
 " >> custom remap configs
 
@@ -263,3 +264,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" for FZF open :Files with ctrl + f
+nnoremap <silent> <C-f> :GFiles<CR>
