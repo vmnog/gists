@@ -7,7 +7,7 @@
 3. Open init.vim with nvim `$ nvim ~/.config/nvim/init.vim` 
 4. If you use asdf, change the variable `let g:coc_node_path = '/home/YOUR_USERNAME/.asdf/shims/node`
 5. Install plugins `:PlugInstall`
-6. Install Coc Plugins `:CocInstall coc-json coc-tsserver`
+6. Install Coc Plugins `:CocInstall coc-json coc-tsserver coc-styled-components coc-eslint`
 7. Re-open nvim
 8. Run `:BlamerToggle` for activating git tracking in lines (gitlens)
 
