@@ -5,13 +5,19 @@
 :set shiftwidth=2
 :set smarttab
 :set softtabstop=2
-:set mouse=a
 :set autoread
 :set wrap!
 :set colorcolumn=80
+:set scrolloff=8
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 :set path+=**
-
+:set ignorecase
+" for insert : when I press ; in command mode (esc)
+nnoremap ; : 
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 " >> custom remap configs
 
 " press double esc for exiting search results mode
@@ -24,8 +30,8 @@ call plug#begin()
 Plug 'https://github.com/vim-airline/vim-airline' "mostra informações detalhadas na parte de baixo do terminal
 Plug 'https://github.com/preservim/nerdtree' "habilita navegação pelos arquivos com o comando NERDTreeFocus
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
-Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
+" Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
+" Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'ryanoasis/vim-devicons' " add icons to nerdtree visualization
@@ -39,12 +45,18 @@ Plug 'sbdchd/neoformat' " for vim-prettier
 Plug 'lukas-reineke/indent-blankline.nvim' " for show indentation vert lines
 Plug 'dracula/vim' " dracula theme -> :Colors -> select dracula
 Plug 'APZelos/blamer.nvim' " for blame git history in line, similar to gitlens
+Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
 " default colorscheme
 " :colorscheme dracula
 :colorscheme gruvbox
+" :colorscheme nord
+
+autocmd FileType css setl iskeyword+=-
+autocmd FileType scss setl iskeyword+=@-@
 
 let g:coc_node_path = '/home/brasilprev/.asdf/shims/node'
 
@@ -74,9 +86,10 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 
-" prettier vim-prettier
-let g:neoformat_try_node_exe = 1
-autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ es5
+" for auto format on saving 
+" let g:neoformat_try_node_exe = 1
+" autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trailing-comma\ es5
+"
 "autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
 "autocmd BufWritePre,TextChanged,InsertLeave *.ts Neoformat
 "autocmd BufWritePre,TextChanged,InsertLeave *.tsx Neoformat
@@ -89,7 +102,6 @@ autocmd FileType javascript setlocal formatprg=prettier\ --single-quote\ --trail
 
 " tagbar shortcuts
 nmap <F8> :TagbarToggle<CR>
-
 
 " for prevent warning from coc.nvim
 let g:coc_disable_startup_warning = 1 
@@ -194,6 +206,12 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+" for autoformating with neoformat when save
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -265,5 +283,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" for FZF open :Files with ctrl + f
-nnoremap <silent> <C-f> :GFiles<CR>
+" for FZF open :GFiles with ctrl + p
+nnoremap <silent> <C-p> :GFiles<CR>
+" for :Ag when pressing ctrl + f
+nnoremap <silent> <C-f> :Ag<CR>
