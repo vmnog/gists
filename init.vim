@@ -9,11 +9,15 @@
 :set wrap!
 :set colorcolumn=80
 :set scrolloff=8
-highlight ColorColumn ctermbg=0 guibg=lightgrey
 :set path+=**
 :set ignorecase
-" for insert : when I press ; in command mode (esc)
-nnoremap ; : 
+se mouse+=a
+
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+""""" enable the theme
+syntax enable
+
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -47,6 +51,7 @@ Plug 'dracula/vim' " dracula theme -> :Colors -> select dracula
 Plug 'APZelos/blamer.nvim' " for blame git history in line, similar to gitlens
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
+Plug 'haishanh/night-owl.vim'
 
 call plug#end()
 
@@ -54,22 +59,32 @@ call plug#end()
 " :colorscheme dracula
 :colorscheme gruvbox
 " :colorscheme nord
+" colorscheme night-owl
+
+" for enabling true theme colors instead of terminal colors
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+
+" To enable the lightline theme
+let g:lightline = { 'colorscheme': 'nightowl' }
 
 autocmd FileType css setl iskeyword+=-
 autocmd FileType scss setl iskeyword+=@-@
 
 let g:coc_node_path = '/home/brasilprev/.asdf/shims/node'
 
-lua << EOF
-	vim.opt.list = true
-	vim.opt.listchars:append("space:⋅")
-	vim.opt.listchars:append("eol:↴")
+" lua << EOF
+" 	vim.opt.list = true
+" 	vim.opt.listchars:append("space:⋅")
+" 	vim.opt.listchars:append("eol:↴")
 
-	require("indent_blankline").setup {
-		show_end_of_line = true,
-		space_char_blankline = " ",
-	}
-EOF
+" 	require("indent_blankline").setup {
+" 		show_end_of_line = true,
+" 		space_char_blankline = " ",
+" 	}
+" EOF
 
 filetype plugin indent on
 syntax enable
@@ -79,8 +94,8 @@ set encoding=UTF-8
 
 " nerdtree shortcuts 
 " nnoremap <C-f> :NERDTreeFocus<CR>
-nnoremap <C-a> :NERDTreeFind<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeFind<CR>
+" nnoremap <C-t> :NERDTreeToggle<CR>
 
 " nerdtree changing default symbols
 let g:NERDTreeDirArrowExpandable="+"
