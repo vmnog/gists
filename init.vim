@@ -9,10 +9,23 @@
 :set wrap!
 :set colorcolumn=80
 :set scrolloff=8
+:set sidescrolloff=5
 :set path+=**
 :set ignorecase
 se mouse+=a
+"Mode Settings
+let &t_SI.="\e[2 q" "SI = INSERT mode
+let &t_SR.="\e[2 q" "SR = REPLACE mode
+let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
 
+"Cursor settings:
+
+"  1 -> blinking block
+"  2 -> solid block 
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 """"" enable the theme
@@ -50,15 +63,18 @@ Plug 'lukas-reineke/indent-blankline.nvim' " for show indentation vert lines
 Plug 'dracula/vim' " dracula theme -> :Colors -> select dracula
 Plug 'APZelos/blamer.nvim' " for blame git history in line, similar to gitlens
 Plug 'arcticicestudio/nord-vim'
+Plug 'rmehri01/onenord.nvim', { 'branch': 'main' }
 Plug 'morhetz/gruvbox'
 Plug 'haishanh/night-owl.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 call plug#end()
 
 " default colorscheme
 " :colorscheme dracula
-:colorscheme gruvbox
+" :colorscheme gruvbox
 " :colorscheme nord
+:colorscheme onenord
 " colorscheme night-owl
 
 " for enabling true theme colors instead of terminal colors
@@ -68,7 +84,7 @@ endif
 
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'nightowl' }
+let g:lightline = { 'colorscheme': 'nord' }
 
 autocmd FileType css setl iskeyword+=-
 autocmd FileType scss setl iskeyword+=@-@
@@ -100,6 +116,8 @@ nnoremap <C-t> :NERDTreeFind<CR>
 " nerdtree changing default symbols
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
+" auto close nerdtree when open file
+let g:NERDTreeQuitOnOpen = 1
 
 " for auto format on saving 
 " let g:neoformat_try_node_exe = 1
@@ -278,7 +296,8 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+let g:airline#extensions#tabline#enabled = 1
 
 " Mappings for CoCList
 " Show all diagnostics.
