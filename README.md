@@ -89,3 +89,4 @@ my configs for alias, git, nvim configs and plugins, tmux etc
 | Move current pane to very direction | ctrl + w + <HJKL> |
 | Remove next spaces and returns | shift + j |
 | navigate direction by N lines / characters | (number) + (direction hjlk) → 10j 10k 10l 10h |
+| Search current cursor word | #
